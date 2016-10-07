@@ -1,0 +1,25 @@
+version: '2'
+services:
+  proxy:
+    build: ./proxy
+    image: app-proxy:0.1.0
+    ports:
+      - 8000:80
+    links:
+      - tattva
+      - data-mill
+  tattva:
+    build: ./tattva
+    image: app1:0.1.0
+    expose:
+      - 8080
+  data-mill:
+    build: ./data-mill
+    image: app2:0.1.0
+    expose:
+      - 8080
+  samarth:
+    build: ./samarth
+    image: samarth:latest
+    expose:
+      - 8080
